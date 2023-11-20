@@ -101,7 +101,7 @@ restart_button.place(x = 55,y = 300)
 submit()
   
 
-
+root.protocol("WM_DELETE_WINDOW", disable_event)
 # infinite loop which is required to
 # run tkinter program infinitely
 # until an interrupt occurs

